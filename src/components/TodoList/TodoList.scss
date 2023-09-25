@@ -1,0 +1,17 @@
+.TodoList {
+    h3 {
+        text-align: center;
+    }
+
+    .ant-list-item {
+        margin-left: 0;
+    }
+
+    .ant-input-disabled {
+        color: black;
+    }
+
+    .ant-list-item-meta-description {
+        font-weight: bold;
+    }
+}
