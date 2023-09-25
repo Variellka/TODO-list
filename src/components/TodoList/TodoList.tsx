@@ -2,38 +2,24 @@ import { List, Input, Button } from 'antd';
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 import { Typography } from 'antd';
 import './TodoList.scss'
+import { TodoItem } from 'entities/TodoItem/types';
+import { useSelector } from 'react-redux';
+import { getTodoItems } from '../../entities/TodoItem/selectors';
 
 const { Title } = Typography;
 
-const data = [
-    {
-        title: 'Ant Design Title 1',
-        date: '25.09.2023'
-    },
-    {
-        title: 'Ant Design Title 2',
-        date: '25.09.2023'
-    },
-    {
-        title: 'Ant Design Title 3',
-        date: '25.09.2023'
-    },
-    {
-        title: 'Ant Design Title 4',
-        date: '25.09.2023'
-    },
-  ];
-
 const TodoList = () => {
+    const todoItems = useSelector(getTodoItems)
+
     return (
         <div className='TodoList'>
             <Title level={3}>Tasks:</Title> 
             <List
                 itemLayout="horizontal"
-                dataSource={data}
+                dataSource={todoItems}
                 size="large"
                 bordered
-                renderItem={(item) => (
+                renderItem={(item: TodoItem) => (
                     <List.Item
                         actions={[
                             <Button type='dashed'><EditTwoTone /></Button>,
