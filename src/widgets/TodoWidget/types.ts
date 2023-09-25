@@ -4,5 +4,5 @@ export interface TodoItem {
 }
 
 export interface TodoItemsSchema {
-    todos: TodoItem[]
+    todos: TodoItem[],
 }

@@ -2,21 +2,23 @@ import { List, Input, Button } from 'antd';
 import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
 import { Typography } from 'antd';
 import './TodoList.scss'
-import { TodoItem } from 'entities/TodoItem/types';
-import { useSelector } from 'react-redux';
-import { getTodoItems } from '../../entities/TodoItem/selectors';
+import { TodoItem } from 'widgets/TodoWidget/types';
 
 const { Title } = Typography;
 
-const TodoList = () => {
-    const todoItems = useSelector(getTodoItems)
+interface TodoListProps {
+    items: TodoItem[]
+}
+
+const TodoList = (props: TodoListProps) => {
+    const {items} = props 
 
     return (
         <div className='TodoList'>
             <Title level={3}>Tasks:</Title> 
             <List
                 itemLayout="horizontal"
-                dataSource={todoItems}
+                dataSource={items}
                 size="large"
                 bordered
                 renderItem={(item: TodoItem) => (

@@ -1,3 +1,3 @@
-import AddNewTask from "./AddNewTask/AddNewTask";
+import AddTodo from "./AddTodo/AddTodo";
 
-export {AddNewTask}
+export {AddTodo}
