@@ -6,7 +6,7 @@ import { useAppDispatch } from '../../app/hooks';
 import { addTodoActions } from './slice';
 
 interface AddTodoProps {
-    onAddNewComment: (text?: string) => void
+    onAddNewComment: (text: string) => void
 }
 
 const AddTodo = (props: AddTodoProps) => {

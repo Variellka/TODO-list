@@ -15,7 +15,7 @@ const TodoWidget = () => {
     const dispatch = useAppDispatch()
     const todoItems = useSelector(getTodoItems)
 
-    const onAddNewComment = useCallback((text?: string) => {
+    const onAddNewComment = useCallback((text: string) => {
         dispatch(todoItemsActions.addTodo(text))
     }, [dispatch])
 
