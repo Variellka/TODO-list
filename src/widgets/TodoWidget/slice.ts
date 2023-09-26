@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { TodoItem, TodoItemsSchema } from './types'; 
+import { TodoItem, TodoItemsSchema } from '../../entity'; 
 
 const initialState: TodoItemsSchema = {
     todos: []

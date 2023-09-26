@@ -7,7 +7,7 @@ import { useCallback } from "react";
 import { todoItemsActions } from "./slice";
 import { useSelector } from "react-redux";
 import { getTodoItems } from "./selectors";
-import { TodoItem } from "./types";
+import { TodoItem } from "../../entity";
 
 const { Title } = Typography;
 

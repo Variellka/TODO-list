@@ -1,7 +1,7 @@
 import { List, Popconfirm, Button, Input, message } from 'antd';
 import dayjs from 'dayjs';
 import { DeleteOutlined,  EditOutlined, CheckOutlined } from '@ant-design/icons';
-import { TodoItem } from '../../widgets/TodoWidget/types';
+import { TodoItem } from '../../entity';
 import { useState } from 'react';
 
 interface TodoProps {

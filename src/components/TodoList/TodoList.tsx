@@ -1,7 +1,7 @@
 import { List } from 'antd';
 import { Typography } from 'antd';
 import './TodoList.scss'
-import { TodoItem } from '../../widgets/TodoWidget/types';
+import { TodoItem } from '../../entity';
 import dayjs from 'dayjs';
 import Todo from '../../components/Todo/Todo';
 

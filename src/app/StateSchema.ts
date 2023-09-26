@@ -1,4 +1,4 @@
-import { TodoItemsSchema } from "../widgets/TodoWidget/types";
+import { TodoItemsSchema } from "../entity";
 import { AddTodoSchema } from "../features/AddTodo/types";
 
 export interface StateSchema {
