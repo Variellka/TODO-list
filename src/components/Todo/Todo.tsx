@@ -15,6 +15,20 @@ const Todo = (props: TodoProps) => {
     const [readonly, setReadonly] = useState(true)
     const [text, setText] = useState(item.title)
 
+    const onSave = () => {
+        if (text) {
+            setReadonly(true);
+            message.success('saved');
+            onSaveEditedTodo({
+                ...item,
+                title: text
+            })
+        } else {
+            message.error('empty task')
+
+        }
+    }
+
     return (
         <List.Item
             actions={[
@@ -28,14 +42,8 @@ const Todo = (props: TodoProps) => {
                 :
                 <Popconfirm
                     title="save"
-                    onOpenChange={() => {
-                        setReadonly(true);
-                        message.success('saved');
-                        onSaveEditedTodo({
-                            ...item,
-                            title: text
-                        })
-                    }}
+                    onOpenChange={onSave}
+                    open={false}
                 >
                     <Button 
                         type='primary'
@@ -46,9 +54,7 @@ const Todo = (props: TodoProps) => {
                ,
                 <Popconfirm
                     title="Are you sure you want to delete?"
-                    onConfirm={() => {
-                        onDeleteTodo(item.id)
-                    }}
+                    onConfirm={() => {onDeleteTodo(item.id)}}
                 >
                     <Button 
                         danger
