@@ -19,8 +19,10 @@ const AddTodo = (props: AddTodoProps) => {
     };
 
     const onAddTodo = () => {
-        onAddNewComment(text)
-        dispatch(addTodoActions.setText(''))
+        if (text) {
+            onAddNewComment(text)
+            dispatch(addTodoActions.setText(''))    
+        }
     }
 
     return (

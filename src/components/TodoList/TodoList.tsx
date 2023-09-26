@@ -1,17 +1,21 @@
-import { List, Input, Button } from 'antd';
-import { EditTwoTone, DeleteTwoTone } from '@ant-design/icons';
+import { List, Input, Button, Popconfirm } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
 import './TodoList.scss'
 import { TodoItem } from 'widgets/TodoWidget/types';
+import dayjs from 'dayjs';
+
+dayjs().format()
 
 const { Title } = Typography;
 
 interface TodoListProps {
-    items: TodoItem[]
+    items: TodoItem[],
+    onDeleteTodo: (value: string) => void,
 }
 
 const TodoList = (props: TodoListProps) => {
-    const {items} = props 
+    const {items, onDeleteTodo} = props;
 
     return (
         <div className='TodoList'>
@@ -24,13 +28,24 @@ const TodoList = (props: TodoListProps) => {
                 renderItem={(item: TodoItem) => (
                     <List.Item
                         actions={[
-                            <Button type='dashed'><EditTwoTone /></Button>,
-                            <Button type='dashed'><DeleteTwoTone /></Button>
+                            <Popconfirm
+                                title="Are you sure you want to delete?"
+                                onConfirm={() => {
+                                    onDeleteTodo(item.date)
+                                }}
+                            >
+                                <Button 
+                                    danger
+                                    type='primary'
+                                >
+                                   <DeleteOutlined />
+                                </Button>
+                           </Popconfirm>
                         ]}
                     >
                         <List.Item.Meta
-                            title={<Input value={item.title} disabled/>}
-                            description={item.date}
+                            title={<Input value={item.title} />}
+                            description={dayjs(item.date).format('MMMM D, YYYY h:mm A')}
                         />
                     </List.Item>
                 )}

@@ -17,14 +17,21 @@ const TodoWidget = () => {
     const onAddNewComment = useCallback((text?: string) => {
         dispatch(todoItemsActions.addTodo(text))
     }, [dispatch])
-    
+
+    const onDeleteTodo = useCallback((date: string) => {
+        dispatch(todoItemsActions.deleteToDo(date))
+    }, [dispatch])
+
 
     return ( 
         <div className="TodoWidget">
             <Typography>
                 <Title>TO DO LIST</Title>
                 <AddTodo onAddNewComment={onAddNewComment}/>
-                <TodoList items={todoItems}/>
+                <TodoList 
+                    items={todoItems}
+                    onDeleteTodo={onDeleteTodo}
+                />
             </Typography>
         </div> 
     );
