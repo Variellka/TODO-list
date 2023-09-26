@@ -19,8 +19,15 @@ export const todoItemsSlice = createSlice({
         deleteToDo: (state, action) => {
             let { todos } = state;
             state.todos = todos.filter((item : TodoItem) => 
-                item.id !== action.payload);
-          },
+                item.id !== action.payload
+            );
+        },
+        saveEditedTodo: (state, action) => {
+            let { todos } = state;
+            state.todos = todos.map((item) => 
+                item.id === action.payload.id ? action.payload : item
+            );
+        },
     },
 });
 

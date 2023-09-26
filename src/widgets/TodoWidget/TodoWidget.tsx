@@ -7,6 +7,7 @@ import { useCallback } from "react";
 import { todoItemsActions } from "./slice";
 import { useSelector } from "react-redux";
 import { getTodoItems } from "./selectors";
+import { TodoItem } from "./types";
 
 const { Title } = Typography;
 
@@ -22,6 +23,9 @@ const TodoWidget = () => {
         dispatch(todoItemsActions.deleteToDo(id))
     }, [dispatch])
 
+    const onSaveEditedTodo = useCallback((todo: TodoItem) => {
+        dispatch(todoItemsActions.saveEditedTodo(todo))
+    }, [dispatch])
 
     return ( 
         <div className="TodoWidget">
@@ -31,6 +35,7 @@ const TodoWidget = () => {
                 <TodoList 
                     items={todoItems}
                     onDeleteTodo={onDeleteTodo}
+                    onSaveEditedTodo={onSaveEditedTodo}
                 />
             </Typography>
         </div> 

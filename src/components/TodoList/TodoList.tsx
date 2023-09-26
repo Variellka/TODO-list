@@ -1,9 +1,9 @@
-import { List, Input, Button, Popconfirm } from 'antd';
-import { DeleteOutlined } from '@ant-design/icons';
+import { List } from 'antd';
 import { Typography } from 'antd';
 import './TodoList.scss'
-import { TodoItem } from 'widgets/TodoWidget/types';
+import { TodoItem } from '../../widgets/TodoWidget/types';
 import dayjs from 'dayjs';
+import Todo from '../../components/Todo/Todo';
 
 dayjs().format()
 
@@ -12,10 +12,11 @@ const { Title } = Typography;
 interface TodoListProps {
     items: TodoItem[],
     onDeleteTodo: (value: number) => void,
+    onSaveEditedTodo: (value: TodoItem) => void
 }
 
 const TodoList = (props: TodoListProps) => {
-    const {items, onDeleteTodo} = props;
+    const {items, onDeleteTodo, onSaveEditedTodo} = props;
 
     return (
         <div className='TodoList'>
@@ -26,28 +27,12 @@ const TodoList = (props: TodoListProps) => {
                 size="large"
                 bordered
                 renderItem={(item: TodoItem) => (
-                    <List.Item
-                        actions={[
-                            <Popconfirm
-                                title="Are you sure you want to delete?"
-                                onConfirm={() => {
-                                    onDeleteTodo(item.id)
-                                }}
-                            >
-                                <Button 
-                                    danger
-                                    type='primary'
-                                >
-                                   <DeleteOutlined />
-                                </Button>
-                           </Popconfirm>
-                        ]}
-                    >
-                        <List.Item.Meta
-                            title={<Input value={item.title} />}
-                            description={dayjs(item.date).format('MMMM D, YYYY h:mm A')}
-                        />
-                    </List.Item>
+                    <Todo 
+                        item={item} 
+                        onDeleteTodo={onDeleteTodo} 
+                        onSaveEditedTodo={onSaveEditedTodo}
+                    key={item.id}
+                    />
                 )}
             />
         </div>
