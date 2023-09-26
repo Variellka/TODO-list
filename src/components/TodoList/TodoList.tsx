@@ -11,7 +11,7 @@ const { Title } = Typography;
 
 interface TodoListProps {
     items: TodoItem[],
-    onDeleteTodo: (value: string) => void,
+    onDeleteTodo: (value: number) => void,
 }
 
 const TodoList = (props: TodoListProps) => {
@@ -31,7 +31,7 @@ const TodoList = (props: TodoListProps) => {
                             <Popconfirm
                                 title="Are you sure you want to delete?"
                                 onConfirm={() => {
-                                    onDeleteTodo(item.date)
+                                    onDeleteTodo(item.id)
                                 }}
                             >
                                 <Button 

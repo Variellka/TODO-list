@@ -11,6 +11,7 @@ export const todoItemsSlice = createSlice({
     reducers: {
         addTodo: (state, action) => {
             state.todos.push({
+                id: state.todos.length ? state.todos[state.todos.length - 1].id + 1 : 0,
                 title: action.payload,
                 date: new Date().toString()
             })
@@ -18,7 +19,7 @@ export const todoItemsSlice = createSlice({
         deleteToDo: (state, action) => {
             let { todos } = state;
             state.todos = todos.filter((item : TodoItem) => 
-                item.date !== action.payload);
+                item.id !== action.payload);
           },
     },
 });

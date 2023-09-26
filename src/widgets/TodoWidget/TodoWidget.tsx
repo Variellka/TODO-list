@@ -18,8 +18,8 @@ const TodoWidget = () => {
         dispatch(todoItemsActions.addTodo(text))
     }, [dispatch])
 
-    const onDeleteTodo = useCallback((date: string) => {
-        dispatch(todoItemsActions.deleteToDo(date))
+    const onDeleteTodo = useCallback((id: number) => {
+        dispatch(todoItemsActions.deleteToDo(id))
     }, [dispatch])
 
 
